@@ -29,7 +29,7 @@
     
 }
 
--(void)viewDidLoad {
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.title = @"Currently";
@@ -57,13 +57,9 @@
             
             Movie *movie = [[Movie alloc] initWithDict:dict];
             
-            movie.title = dict[@"title"];
-            
-            
             [movies addObject:movie];
-            
         }
-        _movies = [movies copy];
+        self.movies = [movies copy];
 
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -115,13 +111,13 @@
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    Movie *movie = _movies[indexPath.row];
+    Movie *movie = self.movies[indexPath.row];
     DetailViewController *detailMovieView = [[DetailViewController alloc] init];
     detailMovieView.modalPresentationStyle = UIModalPresentationCustom;
     detailMovieView.transitioningDelegate = self;
     
-    detailMovieView.movie = _movies[indexPath.row];
-    
+	detailMovieView.movie = movie;
+	
     [self.navigationController pushViewController:detailMovieView animated:YES];
 }
 

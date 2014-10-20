@@ -10,7 +10,10 @@
 		0762655519EC3AB700F8C881 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0762655219EC3AB700F8C881 /* CoreGraphics.framework */; };
 		0762655619EC3AB700F8C881 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0762655319EC3AB700F8C881 /* Foundation.framework */; };
 		0762655719EC3AB700F8C881 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0762655419EC3AB700F8C881 /* UIKit.framework */; };
-		987608B732F6F5824DF693D1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A1E29EFC5DB20FA5CEDA1C /* libPods.a */; };
+		39453B0219F472CC00CE086E /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39453B0119F472CC00CE086E /* DetailView.m */; };
+		39F7B58619F46649006E9956 /* SDWebImage.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 39F7B58519F46649006E9956 /* SDWebImage.podspec */; };
+		39F7B58819F46671006E9956 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F7B58719F46671006E9956 /* ImageIO.framework */; };
+		DCC23209CCDD121002962E36 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DDA789CC6C422020CE6E17A /* libPods.a */; };
 		FE820D0019EC5153003F93CF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE820CFF19EC5153003F93CF /* DetailViewController.m */; };
 		FE8B8BD119E5C0D0005320F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8B8BD019E5C0D0005320F0 /* main.m */; };
 		FE8B8BD419E5C0D0005320F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8B8BD319E5C0D0005320F0 /* AppDelegate.m */; };
@@ -36,7 +39,11 @@
 		0762655219EC3AB700F8C881 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0762655319EC3AB700F8C881 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0762655419EC3AB700F8C881 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		55A1E29EFC5DB20FA5CEDA1C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DDA789CC6C422020CE6E17A /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		39453B0019F472CC00CE086E /* DetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailView.h; sourceTree = "<group>"; };
+		39453B0119F472CC00CE086E /* DetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailView.m; sourceTree = "<group>"; };
+		39F7B58519F46649006E9956 /* SDWebImage.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = SDWebImage.podspec; path = "../../../Downloads/SDWebImage-master/SDWebImage.podspec"; sourceTree = "<group>"; };
+		39F7B58719F46671006E9956 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		CA0B073B34E6D632BA1360A6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D37FF9F14B38BB12E21F5494 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		FE820CFE19EC5153003F93CF /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -64,10 +71,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F7B58819F46671006E9956 /* ImageIO.framework in Frameworks */,
 				0762655519EC3AB700F8C881 /* CoreGraphics.framework in Frameworks */,
 				0762655619EC3AB700F8C881 /* Foundation.framework in Frameworks */,
 				0762655719EC3AB700F8C881 /* UIKit.framework in Frameworks */,
-				987608B732F6F5824DF693D1 /* libPods.a in Frameworks */,
+				DCC23209CCDD121002962E36 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,10 +109,20 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		39453AFC19F46DFB00CE086E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39453B0019F472CC00CE086E /* DetailView.h */,
+				39453B0119F472CC00CE086E /* DetailView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		CB250E777499B45CCA7EB66D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				55A1E29EFC5DB20FA5CEDA1C /* libPods.a */,
+				39F7B58719F46671006E9956 /* ImageIO.framework */,
+				1DDA789CC6C422020CE6E17A /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -121,6 +139,7 @@
 		FE8B8BC219E5C0D0005320F0 = {
 			isa = PBXGroup;
 			children = (
+				39F7B58519F46649006E9956 /* SDWebImage.podspec */,
 				FE8B8BCD19E5C0D0005320F0 /* CollectionViewJSONTrial */,
 				FE8B8BE719E5C0D0005320F0 /* CollectionViewJSONTrialTests */,
 				FE8B8BCC19E5C0D0005320F0 /* Products */,
@@ -151,6 +170,7 @@
 				FE8B8BFB19E5D5C5005320F0 /* CollectionViewCell.m */,
 				FE820D0119EC515C003F93CF /* Model */,
 				FE8B8BDB19E5C0D0005320F0 /* Images.xcassets */,
+				39453AFC19F46DFB00CE086E /* View */,
 				FE8B8BDD19E5C0D0005320F0 /* LaunchScreen.xib */,
 				FE8B8BCE19E5C0D0005320F0 /* Supporting Files */,
 				0762655819EC3ABD00F8C881 /* Frameworks */,
@@ -266,6 +286,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F7B58619F46649006E9956 /* SDWebImage.podspec in Resources */,
 				FE8B8BDF19E5C0D0005320F0 /* LaunchScreen.xib in Resources */,
 				FE8B8BDC19E5C0D0005320F0 /* Images.xcassets in Resources */,
 			);
@@ -323,6 +344,7 @@
 				FE8B8BD419E5C0D0005320F0 /* AppDelegate.m in Sources */,
 				FE8B8BF919E5D3DD005320F0 /* Movie.m in Sources */,
 				FE8B8BD119E5C0D0005320F0 /* main.m in Sources */,
+				39453B0219F472CC00CE086E /* DetailView.m in Sources */,
 				FE820D0019EC5153003F93CF /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

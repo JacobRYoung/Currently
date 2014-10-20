@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "Movie.h"
 #import "ViewController.h"
+#import "DetailView.h"
 
 @interface DetailViewController ()
 
@@ -18,97 +19,87 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    
+	
+	self.detailView = [[DetailView alloc] init];
+	
+	
 #pragma mark Title and Setup
-    self.title = self.movie.title;
-    self.view.backgroundColor = [UIColor whiteColor];
-
-#pragma mark Fanart Splash
-    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, 64.0, 375.0f, 200.0f)];
-    [self.view addSubview:self.imageView];
-    self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
-
-#pragma mark Rating and Tagline Zone
-    if ([self.movie.rating  isEqual:@"R"]) {
-        self.ratingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 274, 18, 15)];
-        [self.view addSubview:self.ratingImageView];
-        self.ratingImageView.image = [UIImage imageNamed:@"R"];
-        
-        self.tagLabel = [[UILabel alloc] initWithFrame:CGRectMake(38, 274, 355, 200)];
-        [self.view addSubview:self.tagLabel];
-        self.tagLabel.text = self.movie.tagline;
-        self.tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-        self.tagLabel.numberOfLines = 0;
-        [self.tagLabel sizeToFit];
-    }
-    else if ([self.movie.rating isEqual:@"PG-13"]){
-        self.ratingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 274, 44, 15)];
-        [self.view addSubview:self.ratingImageView];
-        self.ratingImageView.image = [UIImage imageNamed:@"PG13"];
-        
-        self.tagLabel = [[UILabel alloc] initWithFrame:CGRectMake(64, 274, 355, 200)];
-        [self.view addSubview:self.tagLabel];
-        self.tagLabel.text = self.movie.tagline;
-        self.tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-        self.tagLabel.numberOfLines = 0;
-        [self.tagLabel sizeToFit];
-    }
-    else if ([self.movie.rating isEqual:@"PG"]){
-        self.ratingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 274, 27, 15)];
-        [self.view addSubview:self.ratingImageView];
-        self.ratingImageView.image = [UIImage imageNamed:@"PG"];
-        
-        self.tagLabel = [[UILabel alloc] initWithFrame:CGRectMake(47, 274, 355, 200)];
-        [self.view addSubview:self.tagLabel];
-        self.tagLabel.text = self.movie.tagline;
-        self.tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-        self.tagLabel.numberOfLines = 0;
-        [self.tagLabel sizeToFit];
-    }
-    else if ([self.movie.rating isEqual:@"G"]){
-        self.ratingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 274, 27, 15)];
-        [self.view addSubview:self.ratingImageView];
-        self.ratingImageView.image = [UIImage imageNamed:@"G"];
-        
-        
-        self.tagLabel = [[UILabel alloc] initWithFrame:CGRectMake(47, 274, 355, 200)];
-        [self.view addSubview:self.tagLabel];
-        self.tagLabel.text = self.movie.tagline;
-        self.tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-        self.tagLabel.numberOfLines = 0;
-        [self.tagLabel sizeToFit];
-        
-        NSLog(@"The Movie's Rating is: %@", self.movie.rating);
-    }
-    else if ([self.movie.rating isEqual:@"NR"]){
-        self.ratingImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 274, 29, 15)];
-        [self.view addSubview:self.ratingImageView];
-        self.ratingImageView.image = [UIImage imageNamed:@"NR"];
-        
-        self.tagLabel = [[UILabel alloc] initWithFrame:CGRectMake(49, 274, 355, 200)];
-        [self.view addSubview:self.tagLabel];
-        self.tagLabel.text = self.movie.tagline;
-        self.tagLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:12];
-        self.tagLabel.numberOfLines = 0;
-        [self.tagLabel sizeToFit];
-    }
-    else {
-        NSLog(@"ERROR");
-        NSLog(@"The Movie's Rating is: %@", self.movie.rating);
-    }
-    
+	self.title = self.movie.title;
+	self.view.backgroundColor = [UIColor whiteColor];
+	
+#pragma mark Format Splash
+	self.detailView.imageView.image =
+	[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
+	[self.view addSubview:self.detailView.imageView];
+	
+#pragma mark Ratings and TagLine
+	[self setRatingImage:self.movie.rating];
+	[self.view addSubview:self.detailView.ratingView];
+	
+	
+	self.detailView.tagLabel.numberOfLines = 0;
+	self.detailView.tagLabel.text = self.movie.tagline;
+	[self.detailView.tagLabel sizeToFit];
+	[self.view addSubview:self.detailView.tagLabel];
+	
 #pragma mark Plot
-    self.plotLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 299, 355, 200)];
-    [self.view addSubview:self.plotLabel];
-    self.plotLabel.text = self.movie.plot;
-    self.plotLabel.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    self.plotLabel.numberOfLines = 0;
-    [self.plotLabel sizeToFit];
-
-    
-    
+	self.detailView.plotLabel.numberOfLines = 0;
+	self.detailView.plotLabel.text = self.movie.plot;
+	[self.detailView.plotLabel sizeToFit];
+	[self.view addSubview:self.detailView.plotLabel];
 }
+
+- (void)setRatingImage:(NSString *)ratingString {
+	
+	UIImage *ratingImage = [[UIImage alloc] init];
+	
+	if ([ratingString isEqualToString:@"R"]) {
+		ratingImage = [UIImage imageNamed:@"R"];
+		
+		self.detailView.ratingView.frame =
+		CGRectMake(10, 274, [ratingImage size].width,
+				   [ratingImage size].height);
+		self.detailView.ratingView.image = ratingImage;
+	
+	}
+	else if ([ratingString isEqualToString:@"PG-13"]) {
+		ratingImage = [UIImage imageNamed:@"PG13"];
+		
+		self.detailView.ratingView.frame =
+		CGRectMake(10, 274, [ratingImage size].width,
+				   [ratingImage size].height);
+		self.detailView.ratingView.image = ratingImage;
+
+	}
+	else if ([ratingString isEqualToString:@"PG"]) {
+		ratingImage = [UIImage imageNamed:@"PG"];
+		
+		self.detailView.ratingView.frame =
+		CGRectMake(10, 274, [ratingImage size].width,
+				   [ratingImage size].height);
+		self.detailView.ratingView.image = ratingImage;
+
+	}
+	else if ([ratingString isEqualToString:@"G"]) {
+		ratingImage = [UIImage imageNamed:@"G"];
+		
+		self.detailView.ratingView.frame =
+		CGRectMake(10, 274, [ratingImage size].width,
+				   [ratingImage size].height);
+		self.detailView.ratingView.image = ratingImage;
+
+	}
+	else if ([ratingString isEqualToString:@"NR"]) {
+		ratingImage = [UIImage imageNamed:@"NR"];
+		
+		self.detailView.ratingView.frame =
+		CGRectMake(10, 274, [ratingImage size].width,
+				   [ratingImage size].height);
+		self.detailView.ratingView.image = ratingImage;
+
+	}
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

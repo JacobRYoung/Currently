@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Movie.h"
+#import "DetailView.h"
 
 @interface DetailViewController : UIViewController
 
-@property (strong, nonatomic) UIImageView *imageView;
-@property (strong, nonatomic) UIImageView *ratingImageView;
-@property (strong, nonatomic) UILabel *plotLabel;
-@property (strong, nonatomic) UILabel *tagLabel;
-
 @property (nonatomic) Movie *movie;
+@property (strong, nonatomic) DetailView *detailView;
+
+-(void)setRatingImage:(NSString *)ratingString;
+
 
 @end

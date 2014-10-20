@@ -12,22 +12,34 @@
 	<dict>
 		<key>8A76AB1C2270EAB76480D04B30B03E19153719E6</key>
 		<string>https://bitbucket.org/daniwah/currently-movies.git</string>
+		<key>B52ADF8DFDF668EC7D8981CBE0EBFAF7FB0728CA</key>
+		<string>https://github.com/DerBarenJude/Currently.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CollectionViewJSONTrial.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>8A76AB1C2270EAB76480D04B30B03E19153719E6</key>
+		<string>../..%20-%20Movies</string>
+		<key>B52ADF8DFDF668EC7D8981CBE0EBFAF7FB0728CA</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://bitbucket.org/daniwah/currently-movies.git</string>
+	<string>https://github.com/DerBarenJude/Currently.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8A76AB1C2270EAB76480D04B30B03E19153719E6</string>
+	<string>B52ADF8DFDF668EC7D8981CBE0EBFAF7FB0728CA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B52ADF8DFDF668EC7D8981CBE0EBFAF7FB0728CA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Currently</string>
+		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
