@@ -21,6 +21,7 @@
     // Override point for customization after application launch.
     
     ViewController *viewController = [[ViewController alloc] init];
+	
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navigationController;

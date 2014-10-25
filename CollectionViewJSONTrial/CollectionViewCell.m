@@ -19,8 +19,6 @@
 
         [self.contentView addSubview:self.imageView];
     }
-    
-
     return self;
 }
 
