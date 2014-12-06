@@ -11,7 +11,7 @@
 #import "Movie.h"
 
 @interface CollectionViewCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
-@property (nonatomic) UIImageView *imageView;
 
 @end

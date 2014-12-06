@@ -19,89 +19,108 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	self.detailView = [[DetailView alloc] init];
-	
+    
+    self.detailView = [[DetailView alloc] init];
+    
 #pragma mark Title and Setup
-	self.title = self.movie.title;
-	self.view.backgroundColor = [UIColor whiteColor];
-	
+    self.title = self.movie.title;
+    self.view.backgroundColor = [UIColor whiteColor];
+    
 #pragma mark Format Splash
-	self.detailView.imageView.image =
-	[UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
-	//[self.view addSubview:self.detailView.imageView];
-	
-#pragma mark Ratings and TagLine
-	[self setRatingImage:self.movie.rating];
-	//[self.view addSubview:self.detailView.ratingView];
-	
-	
-	self.detailView.tagLabel.numberOfLines = 0;
-	self.detailView.tagLabel.text = self.movie.tagline;
-	[self.detailView.tagLabel sizeToFit];
-	//[self.view addSubview:self.detailView.tagLabel];
-	
+    self.detailView.imageView.image =
+    [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
+    [self.view addSubview:self.detailView.imageView];
+    
+#pragma mark Ratings and Tagline
+    [self setRatingImage:self.movie.rating];
+    [self.view addSubview:self.detailView.ratingImageView];
+    
+    self.detailView.tagLabel.numberOfLines = 0;
+    self.detailView.tagLabel.text = self.movie.tagline;
+    [self.detailView.tagLabel sizeToFit];
+    [self.view addSubview:self.detailView.tagLabel];
+
 #pragma mark Plot
-	self.detailView.plotLabel.numberOfLines = 0;
-	self.detailView.plotLabel.text = self.movie.plot;
-	[self.detailView.plotLabel sizeToFit];
-	//[self.view addSubview:self.detailView.plotLabel];
-	
-	
-	[self.view addSubview:self.detailView];
+    self.detailView.plotLabel.numberOfLines = 0;
+    self.detailView.plotLabel.text = self.movie.plot;
+    [self.detailView.plotLabel sizeToFit];
+    [self.view addSubview:self.detailView.plotLabel];
+    
+#pragma mark Trailer Button
+   // self.detailView.trailerButton.backgroundColor = [UIColor lightGrayColor];
+    
+    _detailView.trailerButton = [[UIBarButtonItem alloc ] initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(trailerButton:)];
+    self.navigationItem.rightBarButtonItem = self.detailView.trailerButton;
+
+    
 }
 
-- (void)setRatingImage:(NSString *)ratingString {
-	
-	
-	/// Note: Deadstore happens when you initialize an object to an new object
-	// then refll the object as done below, esentially initializing the object
-	// twice.
-	UIImage *ratingImage;
-	
-	if ([ratingString isEqualToString:@"R"]) {
-		ratingImage = [UIImage imageNamed:@"R"];
-		
-		self.detailView.ratingView.frame =
-		CGRectMake(10, 274, [ratingImage size].width,
-				   [ratingImage size].height);
-		self.detailView.ratingView.image = ratingImage;
-	
-	}
-	else if ([ratingString isEqualToString:@"PG-13"]) {
-		ratingImage = [UIImage imageNamed:@"PG13"];
-		
-		self.detailView.ratingView.frame =
-		CGRectMake(10, 274, [ratingImage size].width,
-				   [ratingImage size].height);
-		self.detailView.ratingView.image = ratingImage;
+- (void)trailerButton:(UIButton *)sender {
+    NSError *error = nil;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<=v(=|/))([-a-zA-Z0-9_]+)|(?<=youtu.be/)([-a-zA-Z0-9_]+)" options:NSRegularExpressionCaseInsensitive error:&error];
+    NSTextCheckingResult *match = [regex firstMatchInString:self.movie.trailerURL options:0 range:NSMakeRange(0, [self.movie.trailerURL length])];
+    NSLog(@"%@",self.movie.trailerURL);
+    if (match) {
+        NSRange videoIDRange = [match rangeAtIndex:0];
+        NSString *substringForFirstMatch = [self.movie.trailerURL substringWithRange:videoIDRange];
+        NSLog(@"%@", substringForFirstMatch);
+        
+        XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:substringForFirstMatch];
+        
+        [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+    }
+}
 
-	}
-	else if ([ratingString isEqualToString:@"PG"]) {
-		ratingImage = [UIImage imageNamed:@"PG"];
-		
-		self.detailView.ratingView.frame =
-		CGRectMake(10, 274, [ratingImage size].width,
-				   [ratingImage size].height);
-		self.detailView.ratingView.image = ratingImage;
-
-	}
-	else if ([ratingString isEqualToString:@"G"]) {
-		ratingImage = [UIImage imageNamed:@"G"];
-		
-		self.detailView.ratingView.frame =
-		CGRectMake(10, 274, [ratingImage size].width,
-				   [ratingImage size].height);
-		self.detailView.ratingView.image = ratingImage;
-
-	}
-	else if ([ratingString isEqualToString:@"NR"]) {
-		ratingImage = [UIImage imageNamed:@"NR"];
-		
-		self.detailView.ratingView.frame =
-		CGRectMake(10, 274, [ratingImage size].width,
-				   [ratingImage size].height);
-		self.detailView.ratingView.image = ratingImage;
-	}
+- (void)setRatingImage:(NSString *)ratingString
+{
+    UIImage *ratingImage = [[UIImage alloc] init];
+    
+    if ([ratingString isEqualToString:@"R"]) {
+        ratingImage = [UIImage imageNamed:@"R"];
+        
+        self.detailView.ratingImageView.frame =
+        CGRectMake(10, 274, [ratingImage size].width,
+                   [ratingImage size].height);
+        self.detailView.ratingImageView.image = ratingImage;
+    }
+    else if ([ratingString isEqualToString:@"PG-13"]) {
+        ratingImage = [UIImage imageNamed:@"PG13"];
+        
+        self.detailView.ratingImageView.frame =
+        CGRectMake(10, 274, [ratingImage size].width,
+                   [ratingImage size].height);
+        
+        self.detailView.ratingImageView.image = ratingImage;
+    }
+    else if ([ratingString isEqualToString:@"PG"]) {
+        ratingImage = [UIImage imageNamed:@"PG"];
+        
+        self.detailView.ratingImageView.frame =
+        CGRectMake(10, 274, [ratingImage size].width,
+                   [ratingImage size].height);
+        
+        self.detailView.ratingImageView.image = ratingImage;
+    }
+    else if ([ratingString isEqualToString:@"G"]) {
+        ratingImage = [UIImage imageNamed:@"G"];
+        
+        self.detailView.ratingImageView.frame =
+        CGRectMake(10, 274, [ratingImage size].width,
+                   [ratingImage size].height);
+        
+        self.detailView.ratingImageView.image = ratingImage;
+        
+    }
+    else if ([ratingString isEqualToString:@"NR"]) {
+        ratingImage = [UIImage imageNamed:@"NR"];
+        
+        self.detailView.ratingImageView.frame =
+        CGRectMake(10, 274, [ratingImage size].width,
+                   [ratingImage size].height);
+        
+        self.detailView.ratingImageView.image = ratingImage;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -109,14 +128,35 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

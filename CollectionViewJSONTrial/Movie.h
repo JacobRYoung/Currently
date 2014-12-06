@@ -15,7 +15,7 @@
 @property (copy, nonatomic) NSString *poster;
 @property (copy, nonatomic) NSString *fanArt;
 @property (copy, nonatomic) NSString *plot;
-@property (copy, nonatomic) NSURL *trailerURL;
+@property (copy, nonatomic) NSString *trailerURL;
 @property (copy, nonatomic) NSString *rating;
 
 

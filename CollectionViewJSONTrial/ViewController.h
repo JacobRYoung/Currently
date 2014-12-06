@@ -7,14 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Movies.h"
+
 
 @interface ViewController : UICollectionViewController 
 
-@property (strong, nonatomic) Movies *movies;
-
-// @override designated initializer
-- (instancetype)init;
+@property (strong, nonatomic) NSArray *movies;
 
 @end
 

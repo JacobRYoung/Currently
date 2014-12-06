@@ -16,7 +16,7 @@
     self.title = values[@"title"];
     self.tagline = values[@"tagline"];
     self.plot = values[@"overview"];
-    self.trailerURL = [NSURL URLWithString:values[@"trailer"]];
+    self.trailerURL = values[@"trailer"];
     self.poster = [values valueForKeyPath:@"images.poster"];
     self.fanArt = [values valueForKeyPath:@"images.fanart"];
     self.rating = values[@"certification"];

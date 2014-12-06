@@ -20,14 +20,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    ViewController *viewController = [[ViewController alloc] init];
-	
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = navigationController;
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
+   
     return YES;
+}
+- (NSUInteger) application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    if ([[window.rootViewController presentedViewController] isKindOfClass:[XCDYouTubeVideoPlayerViewController class]]) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    else {
+        return UIInterfaceOrientationMaskPortrait;
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
