@@ -27,10 +27,14 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
 #pragma mark Format Splash
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+
     self.detailView.imageView.image =
     [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
     [self.view addSubview:self.detailView.imageView];
-    
+        
+    });
 #pragma mark Ratings and Tagline
     [self setRatingImage:self.movie.rating];
     [self.view addSubview:self.detailView.ratingImageView];
