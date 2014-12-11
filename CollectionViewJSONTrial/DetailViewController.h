@@ -8,14 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "Movie.h"
-#import "DetailView.h"
 #import <XCDYouTubeKit/XCDYouTubeKit.h>
 
 
 @interface DetailViewController : UIViewController
 
 @property (nonatomic) Movie *movie;
-@property (strong, nonatomic) DetailView *detailView;
 
 - (void)setRatingImage:(NSString *)ratingString;
 @end

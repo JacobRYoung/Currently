@@ -9,7 +9,7 @@
             <objects>
                 <collectionViewController id="qSr-0m-qHF" customClass="ViewController" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Faj-39-9Sg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="jzQ-VD-0Ul">
                             <size key="itemSize" width="124" height="176"/>
@@ -33,6 +33,7 @@
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="dVt-3D-xP1" id="E7r-e4-EAe"/>
+                                    <segue destination="LHJ-vr-4wW" kind="show" identifier="detailMovieSegue" id="nY1-JU-3Uc"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -42,11 +43,58 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="FZS-qF-tch"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YJx-PZ-cOS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1480" y="413"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="vwi-fR-9Le">
+            <objects>
+                <viewController id="LHJ-vr-4wW" customClass="MovieDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bvg-pC-f6q"/>
+                        <viewControllerLayoutGuide type="bottom" id="FI4-RV-sIu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eAH-om-fgS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5HR-NZ-K0D">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7h5-6k-n2P">
+                                <rect key="frame" x="24" y="347" width="33" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Summary" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f2Q-Pl-1F4">
+                                <rect key="frame" x="24" y="380" width="375" height="200"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AHg-db-nhB">
+                                <rect key="frame" x="534" y="347" width="50" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="5HR-NZ-K0D" id="dP4-rD-QA0"/>
+                        <outlet property="ratingLabel" destination="AHg-db-nhB" id="HeC-UM-asa"/>
+                        <outlet property="summaryLabel" destination="f2Q-Pl-1F4" id="Qex-Oh-oQA"/>
+                        <outlet property="title" destination="7h5-6k-n2P" id="35t-qi-Reo"/>
+                        <outlet property="titleLabel" destination="7h5-6k-n2P" id="hMb-0e-8NN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pJV-vd-aZb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2265" y="413"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1qY-a4-V7M">

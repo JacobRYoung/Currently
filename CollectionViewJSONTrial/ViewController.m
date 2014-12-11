@@ -10,6 +10,7 @@
 #import "Movie.h"
 #import "DetailViewController.h"
 #import "CollectionViewCell.h"
+#import "MovieDetailViewController.h"
 #import <UIImageView+WebCache.h>
 #import <AFNetworking/AFNetworking.h>
 
@@ -18,7 +19,9 @@
 
 @end
 
-@implementation ViewController
+@implementation ViewController {
+    NSInteger *selectedIndex;
+}
 
 -(void)viewDidLoad {
     [super viewDidLoad];
@@ -92,16 +95,27 @@
     
     return cell;
 }
-
--(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    Movie *movie = self.movies[indexPath.row];
-    DetailViewController *detailMovieView = [[DetailViewController alloc] init];
-    detailMovieView.modalPresentationStyle = UIModalPresentationCustom;
-    detailMovieView.transitioningDelegate = self;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    detailMovieView.movie = movie;
+    if ([segue.identifier isEqualToString:@"detailMovieSegue"]) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+        
+        Movie *movie = self.movies[indexPath.row];
+        MovieDetailViewController *movieDetailViewController = segue.destinationViewController;
+        movieDetailViewController.movie = movie;
+        
+    }
     
-    [self.navigationController pushViewController:detailMovieView animated:YES];
 }
+//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    Movie *movie = self.movies[indexPath.row];
+//    MovieDetailViewController *detailMovieView = [[MovieDetailViewController alloc] init];
+//    detailMovieView.modalPresentationStyle = UIModalPresentationCustom;
+//    detailMovieView.transitioningDelegate = self;
+//    
+//    detailMovieView.movie = movie;
+//    
+//    [self.navigationController pushViewController:detailMovieView animated:YES];
+//}
 
 @end

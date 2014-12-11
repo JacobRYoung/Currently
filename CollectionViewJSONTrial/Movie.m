@@ -20,6 +20,7 @@
     self.poster = [values valueForKeyPath:@"images.poster"];
     self.fanArt = [values valueForKeyPath:@"images.fanart"];
     self.rating = values[@"certification"];
+    self.ratingPercentage = [values valueForKeyPath:@"ratings.percentage"];
     
     return self;
 }
