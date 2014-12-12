@@ -18,22 +18,39 @@
     [super viewDidLoad];
     
     
-//Title
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.titleLabel.text = self.movie.title;
-    
-//Display Movie Image
-    
+	//Set NaviagationItem Title with movie title data
+	self.navigationItemTitleLabel.title = self.movie.title;
+	
+	//Set MovieDetailView Image to movie.fanArt
     self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
     
-//Ratings and Summary
-    
-    //[self setRatingImage:self.movie.rating];
-    
+	//Ratings and Summary
     self.summaryLabel.text = self.movie.plot;
     self.ratingLabel.text = self.movie.ratingPercentage;
-    
+	[self setRatingImage: self.movie.rating];
+}
 
+- (void)setRatingImage:(NSString *)ratingString
+{
+    UIImage *ratingImage = [[UIImage alloc] init];
+
+    if ([ratingString isEqualToString:@"R"]) {
+        ratingImage = [UIImage imageNamed:@"R"];
+    }
+    else if ([ratingString isEqualToString:@"PG-13"]) {
+        ratingImage = [UIImage imageNamed:@"PG13"];
+    }
+    else if ([ratingString isEqualToString:@"PG"]) {
+        ratingImage = [UIImage imageNamed:@"PG"];
+    }
+    else if ([ratingString isEqualToString:@"G"]) {
+        ratingImage = [UIImage imageNamed:@"G"];
+
+	}
+    else if ([ratingString isEqualToString:@"NR"]) {
+        ratingImage = [UIImage imageNamed:@"NR"];
+
+	}
 
 }
 

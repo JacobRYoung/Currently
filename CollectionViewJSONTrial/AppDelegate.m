@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "DetailViewController.h"
+#import "XCDYouTubeVideoPlayerViewController.h"
 
 @interface AppDelegate ()
 

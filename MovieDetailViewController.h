@@ -14,9 +14,9 @@
 
 @property (nonatomic) Movie *movie;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItemTitleLabel;
 
 - (void)setRatingImage:(NSString *)ratingString;
 

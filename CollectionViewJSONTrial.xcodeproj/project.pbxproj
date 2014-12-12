@@ -13,7 +13,6 @@
 		0762655719EC3AB700F8C881 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0762655419EC3AB700F8C881 /* UIKit.framework */; };
 		07A2A86E1A32AB9D002DEB51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07A2A86D1A32AB9D002DEB51 /* Main.storyboard */; };
 		987608B732F6F5824DF693D1 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 55A1E29EFC5DB20FA5CEDA1C /* libPods.a */; };
-		FE820D0019EC5153003F93CF /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE820CFF19EC5153003F93CF /* DetailViewController.m */; };
 		FE8B8BD119E5C0D0005320F0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8B8BD019E5C0D0005320F0 /* main.m */; };
 		FE8B8BD419E5C0D0005320F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8B8BD319E5C0D0005320F0 /* AppDelegate.m */; };
 		FE8B8BD719E5C0D0005320F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FE8B8BD619E5C0D0005320F0 /* ViewController.m */; };
@@ -35,8 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07108E1D1A3A46D20033E584 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MovieDetailViewController.h; sourceTree = "<group>"; };
-		07108E1E1A3A46D20033E584 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MovieDetailViewController.m; sourceTree = "<group>"; };
+		07108E1D1A3A46D20033E584 /* MovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MovieDetailViewController.h; path = ../MovieDetailViewController.h; sourceTree = "<group>"; };
+		07108E1E1A3A46D20033E584 /* MovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MovieDetailViewController.m; path = ../MovieDetailViewController.m; sourceTree = "<group>"; };
 		0762655219EC3AB700F8C881 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		0762655319EC3AB700F8C881 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0762655419EC3AB700F8C881 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -44,8 +43,6 @@
 		55A1E29EFC5DB20FA5CEDA1C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA0B073B34E6D632BA1360A6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D37FF9F14B38BB12E21F5494 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		FE820CFE19EC5153003F93CF /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		FE820CFF19EC5153003F93CF /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		FE8B8BCB19E5C0D0005320F0 /* CollectionViewJSONTrial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CollectionViewJSONTrial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8B8BCF19E5C0D0005320F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE8B8BD019E5C0D0005320F0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -60,8 +57,8 @@
 		FE8B8BEA19E5C0D0005320F0 /* CollectionViewJSONTrialTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewJSONTrialTests.m; sourceTree = "<group>"; };
 		FE8B8BF719E5D3DD005320F0 /* Movie.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Movie.h; sourceTree = "<group>"; };
 		FE8B8BF819E5D3DD005320F0 /* Movie.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Movie.m; sourceTree = "<group>"; };
-		FE8B8BFA19E5D5C5005320F0 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
-		FE8B8BFB19E5D5C5005320F0 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		FE8B8BFA19E5D5C5005320F0 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CollectionViewCell.h; path = CollectionViewJSONTrial/CollectionViewCell.h; sourceTree = "<group>"; };
+		FE8B8BFB19E5D5C5005320F0 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CollectionViewCell.m; path = CollectionViewJSONTrial/CollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				07A2A86D1A32AB9D002DEB51 /* Main.storyboard */,
+				FE8B8BFA19E5D5C5005320F0 /* CollectionViewCell.h */,
+				FE8B8BFB19E5D5C5005320F0 /* CollectionViewCell.m */,
 			);
 			name = View;
 			path = ..;
@@ -113,6 +112,17 @@
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		395925511A3A64CD00EFC038 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FE8B8BD519E5C0D0005320F0 /* ViewController.h */,
+				FE8B8BD619E5C0D0005320F0 /* ViewController.m */,
+				07108E1D1A3A46D20033E584 /* MovieDetailViewController.h */,
+				07108E1E1A3A46D20033E584 /* MovieDetailViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		CB250E777499B45CCA7EB66D /* Frameworks */ = {
@@ -135,8 +145,6 @@
 		FE8B8BC219E5C0D0005320F0 = {
 			isa = PBXGroup;
 			children = (
-				07108E1D1A3A46D20033E584 /* MovieDetailViewController.h */,
-				07108E1E1A3A46D20033E584 /* MovieDetailViewController.m */,
 				FE8B8BCD19E5C0D0005320F0 /* CollectionViewJSONTrial */,
 				FE8B8BE719E5C0D0005320F0 /* CollectionViewJSONTrialTests */,
 				FE8B8BCC19E5C0D0005320F0 /* Products */,
@@ -159,12 +167,7 @@
 			children = (
 				FE8B8BD219E5C0D0005320F0 /* AppDelegate.h */,
 				FE8B8BD319E5C0D0005320F0 /* AppDelegate.m */,
-				FE8B8BD519E5C0D0005320F0 /* ViewController.h */,
-				FE8B8BD619E5C0D0005320F0 /* ViewController.m */,
-				FE820CFE19EC5153003F93CF /* DetailViewController.h */,
-				FE820CFF19EC5153003F93CF /* DetailViewController.m */,
-				FE8B8BFA19E5D5C5005320F0 /* CollectionViewCell.h */,
-				FE8B8BFB19E5D5C5005320F0 /* CollectionViewCell.m */,
+				395925511A3A64CD00EFC038 /* Controllers */,
 				FE820D0119EC515C003F93CF /* Model */,
 				074F804819F5BF3100246F03 /* View */,
 				FE8B8BDB19E5C0D0005320F0 /* Images.xcassets */,
@@ -342,7 +345,6 @@
 				FE8B8BD419E5C0D0005320F0 /* AppDelegate.m in Sources */,
 				FE8B8BF919E5D3DD005320F0 /* Movie.m in Sources */,
 				FE8B8BD119E5C0D0005320F0 /* main.m in Sources */,
-				FE820D0019EC5153003F93CF /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

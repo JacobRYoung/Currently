@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "Movie.h"
-#import "DetailViewController.h"
 #import "CollectionViewCell.h"
 #import "MovieDetailViewController.h"
 #import <UIImageView+WebCache.h>
@@ -21,13 +20,14 @@
 
 @implementation ViewController {
     NSInteger *selectedIndex;
+	CollectionViewCell *cellForDestinationViewController;
 }
 
 -(void)viewDidLoad {
+	
     [super viewDidLoad];
     
     self.title = @"Currently";
-    
     
     self.collectionView.backgroundColor = [UIColor whiteColor];
     [self refresh];
@@ -35,10 +35,18 @@
 }
 
 - (void)refresh {
-        
+	
+	// Create an AF HTTP REQEST OPERATION MANAGER object to handle JSON data from trakt
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    [manager GET:@"http://api.trakt.tv/movies/trending.json/35176d6331d2e2189eba09ad8896e0dd" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
+	
+	// Make GET request to URL data source. success: runs block for parsing JSON Data into NSDictionary object
+    [manager GET:@"http://api.trakt.tv/movies/trending.json/35176d6331d2e2189eba09ad8896e0dd"
+	  parameters:nil success:
+	 ^(AFHTTPRequestOperation *operation, id responseObject) {
+		
+		//NSLog to to Display JSON Data
+        //NSLog(@"JSON: %@", responseObject);
+			 
         NSArray *array = responseObject;
         NSMutableArray *movies = [NSMutableArray array];
         
@@ -89,33 +97,25 @@
     
     cell.backgroundColor = [UIColor lightGrayColor];
     
-//    UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, cell.bounds.size.width, 40)];
-//    title.text = movie.title;
-//    [cell.contentView addSubview:title];
-    
     return cell;
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"detailMovieSegue"]) {
-        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+    if ([segue.identifier isEqualToString:@"movieDetailViewSegue"]) {
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cellForDestinationViewController];
         
         Movie *movie = self.movies[indexPath.row];
-        MovieDetailViewController *movieDetailViewController = segue.destinationViewController;
-        movieDetailViewController.movie = movie;
-        
+		
+		//!!!: This is the proper way to hand off data to the next ViewController, note, do not initialize the next ViewController
+		[[segue destinationViewController] setMovie:movie];
     }
-    
 }
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    Movie *movie = self.movies[indexPath.row];
-//    MovieDetailViewController *detailMovieView = [[MovieDetailViewController alloc] init];
-//    detailMovieView.modalPresentationStyle = UIModalPresentationCustom;
-//    detailMovieView.transitioningDelegate = self;
-//    
-//    detailMovieView.movie = movie;
-//    
-//    [self.navigationController pushViewController:detailMovieView animated:YES];
-//}
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+	
+	// Private CollectionViewCell object is initialized when didSelectItemAtIndexPath is called
+	// TODO: Determine if didSelectItemAtIndexPath is called before or after prepareForSegue:sender:
+	cellForDestinationViewController = [collectionView cellForItemAtIndexPath:indexPath];
+	
+}
 
 @end
