@@ -106,7 +106,7 @@
         
         Movie *movie = self.movies[indexPath.row];
 		
-		//!!!: This is the proper way to hand off data to the next ViewController, note, do not initialize the next ViewController
+		//FIXME:
 		[[segue destinationViewController] setMovie:movie];
     }
 }

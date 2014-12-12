@@ -99,12 +99,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="dgf-G2-cW8"/>
                     <connections>
-                        <outlet property="imageView" destination="5HR-NZ-K0D" id="dP4-rD-QA0"/>
-                        <outlet property="navigationItemTitle" destination="dgf-G2-cW8" id="9ON-H5-Edj"/>
-                        <outlet property="ratingLabel" destination="d1z-Gq-0NA" id="WYA-Di-fCM"/>
-                        <outlet property="summaryLabel" destination="f2Q-Pl-1F4" id="Qex-Oh-oQA"/>
-                        <outlet property="title" destination="7h5-6k-n2P" id="35t-qi-Reo"/>
-                        <outlet property="titleLabel" destination="vBg-fT-Cq2" id="VS0-wU-kbH"/>
+                        <outlet property="imageView" destination="5HR-NZ-K0D" id="SH7-zJ-XAc"/>
+                        <outlet property="navigationItemTitleLabel" destination="dgf-G2-cW8" id="5HF-Yb-wi5"/>
+                        <outlet property="ratingImage" destination="rN4-g5-ko7" id="PUw-Me-cGl"/>
+                        <outlet property="ratingLabel" destination="d1z-Gq-0NA" id="cKQ-1n-KWo"/>
+                        <outlet property="summaryLabel" destination="vBg-fT-Cq2" id="AAJ-0v-uns"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pJV-vd-aZb" userLabel="First Responder" sceneMemberID="firstResponder"/>

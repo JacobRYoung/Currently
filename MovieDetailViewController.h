@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItemTitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *ratingImage;
 
 - (void)setRatingImage:(NSString *)ratingString;
 
