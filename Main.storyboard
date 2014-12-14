@@ -101,8 +101,7 @@
                     <connections>
                         <outlet property="imageView" destination="5HR-NZ-K0D" id="SH7-zJ-XAc"/>
                         <outlet property="navigationItemTitleLabel" destination="dgf-G2-cW8" id="5HF-Yb-wi5"/>
-                        <outlet property="ratingImage" destination="rN4-g5-ko7" id="PUw-Me-cGl"/>
-                        <outlet property="ratingLabel" destination="d1z-Gq-0NA" id="cKQ-1n-KWo"/>
+                        <outlet property="ratingImageView" destination="d1z-Gq-0NA" id="TZQ-qG-M2J"/>
                         <outlet property="summaryLabel" destination="vBg-fT-Cq2" id="AAJ-0v-uns"/>
                     </connections>
                 </viewController>

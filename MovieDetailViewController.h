@@ -13,12 +13,13 @@
 @interface MovieDetailViewController : UIViewController
 
 @property (nonatomic) Movie *movie;
+
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *ratingLabel;
 @property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItemTitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *ratingImage;
+@property (weak, nonatomic) IBOutlet UILabel *ratingImageView;
 
-- (void)setRatingImage:(NSString *)ratingString;
+- (void)setRatingImageWith:(NSString *)ratingString;
 
 @end
