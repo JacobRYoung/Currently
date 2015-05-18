@@ -17,7 +17,7 @@
 @property (copy, nonatomic) NSString *plot;
 @property (copy, nonatomic) NSString *trailerURL;
 @property (copy, nonatomic) NSString *rating;
-@property (copy, nonatomic) NSString *ratingPercentage;
+@property (copy, nonatomic) NSString *movieRatingPercentage;
 
 
 - (id)initWithDict:(NSDictionary *)values;

@@ -7,7 +7,8 @@
 //
 
 #import "MovieDetailViewController.h"
-
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <XCDYouTubeKit/XCDYouTubeKit.h>
 @interface MovieDetailViewController ()
 
 @end
@@ -19,16 +20,40 @@
     
     
 	//Set NaviagationItem Title with movie title data
-	self.navigationItemTitleLabel.title = self.movie.title;
+	//self.navigationItemTitleLabel.title = self.movie.title;
+    self.view.backgroundColor = [UIColor whiteColor];
 	
 	//Set MovieDetailView Image to movie.fanArt
-    self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
     
+    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.imageView sd_setImageWithURL:[NSURL URLWithString:self.movie.fanArt]];
+            [self.moviePosterDetail sd_setImageWithURL:[NSURL URLWithString:self.movie.poster]];
+            //self.imageView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:self.movie.fanArt]]];
+        });
+   
 	//Ratings and Summary
-    self.summaryLabel.text = self.movie.plot;
-    self.ratingLabel.text = self.movie.ratingPercentage;
-	[self setRatingImage: self.movie.rating];
+    self.movieTitle.text = self.movie.title;
+    self.plotLabel.text = self.movie.plot;
+    self.ratingLabel.text = [NSString stringWithFormat:@"%@ %%",self.movie.movieRatingPercentage];
+    [self setRatingImage: self.movie.rating];
 }
+
+- (IBAction)playTrailer:(UIButton *)sender {
+        NSError *error = nil;
+        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"(?<=v(=|/))([-a-zA-Z0-9_]+)|(?<=youtu.be/)([-a-zA-Z0-9_]+)" options:NSRegularExpressionCaseInsensitive error:&error];
+        NSTextCheckingResult *match = [regex firstMatchInString:self.movie.trailerURL options:0 range:NSMakeRange(0, [self.movie.trailerURL length])];
+        NSLog(@"%@",self.movie.trailerURL);
+        if (match) {
+            NSRange videoIDRange = [match rangeAtIndex:0];
+            NSString *substringForFirstMatch = [self.movie.trailerURL substringWithRange:videoIDRange];
+            NSLog(@"%@", substringForFirstMatch);
+            
+            XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:substringForFirstMatch];
+            
+            [self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+        }
+    }
 
 - (void)setRatingImage:(NSString *)ratingString
 {

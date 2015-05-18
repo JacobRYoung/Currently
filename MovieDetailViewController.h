@@ -16,10 +16,15 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UILabel *ratingLabel;
-@property (strong, nonatomic) IBOutlet UILabel *summaryLabel;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navigationItemTitleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *ratingImageView;
+@property (strong, nonatomic) IBOutlet UIImageView *ratingImageView;
+@property (strong, nonatomic) IBOutlet UILabel *movieTitle;
+@property (strong, nonatomic) IBOutlet UILabel *plotLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *moviePosterDetail;
+- (IBAction)playTrailer:(UIButton *)sender;
 
-- (void)setRatingImageWith:(NSString *)ratingString;
+
+
+- (void)setRatingImage:(NSString *)ratingString;
 
 @end
